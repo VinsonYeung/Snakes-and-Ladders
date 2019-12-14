@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Game {
+class Game {
 
     private Player[] players;
     private Player activePlayer;
     private Board board;
     private Map<Player, Integer> mapping;
 
-    public Game() {
+    Game() {
         players = new Player[6];
         players[0] = new Player("Red", Color.RED);
         players[1] = new Player("Blue", Color.BLUE);
@@ -26,26 +26,24 @@ public class Game {
         }
     }
 
-    public Board getBoard() {
+    Board getBoard() {
         return board;
     }
 
-    public Player[] getPlayers() {
+    Player[] getPlayers() {
         return players;
     }
 
-    public Integer getPosition(int player) {
+    Integer getPosition(int player) {
         return mapping.get(players[player]);
     }
 
-    public Integer getPosition(Player player) {
+    Integer getPosition(Player player) {
         return mapping.get(player);
     }
 
-    public static int rollDice() {
-        int dice1 = (int) Math.ceil(Math.random() * 6);
-        int dice2 = (int) Math.ceil(Math.random() * 6);
-        return dice1 + dice2;
+    static int rollDice() {
+        return (int) Math.ceil(Math.random() * 6);
     }
 
     private static Player[] rollTurns(Player[] players) {
@@ -78,7 +76,7 @@ public class Game {
         return newTurns;
     }
 
-    public void moveTo(Player player, int square) {
+    void moveTo(Player player, int square) {
         mapping.put(player, square);
     }
 }
